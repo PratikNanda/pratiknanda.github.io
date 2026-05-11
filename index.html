@@ -1,992 +1,1253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pratik Nanda Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+        name="description"
+        content="Pratik Nanda — Data Analyst specializing in AI automation, agentic workflows, and data engineering. 4.5+ years at Infosys."
+    />
+    <title>Pratik Nanda — Data Analyst | AI Automation &amp; Data Engineering</title>
+
+    <!-- Favicon: inline SVG, "PN" monogram matching the nav logo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%231a5c35'/><text x='50' y='68' text-anchor='middle' font-family='system-ui,-apple-system,Segoe UI,sans-serif' font-size='46' font-weight='800' fill='white'>PN</text></svg>" />
+
+    <!-- Google Fonts: Plus Jakarta Sans (display), DM Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Tabler Icons (outline) via CDN -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.20.0/dist/tabler-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- Scroll progress bar (fills as user scrolls) -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-  <canvas id="grid-bg"></canvas>
+    <!-- Custom cursor (desktop hover devices only; hidden via CSS on touch) -->
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <a class="nav-logo" href="#home">
-      <div class="logo-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <span class="logo-text">Pratik Nanda</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+    <!-- =========================================================
+         HEADER / NAVBAR — glassmorphism, monogram, animated underlines
+         ========================================================= -->
+    <header class="site-header" id="siteHeader">
+        <nav class="nav container" aria-label="Primary">
+            <a href="#hero" class="nav__logo" aria-label="Home">
+                <span class="nav__monogram">PN</span>
+            </a>
+
+            <button
+                class="nav__toggle"
+                id="navToggle"
+                aria-expanded="false"
+                aria-controls="navMenu"
+                aria-label="Toggle navigation"
+            >
+                <i class="ti ti-menu-2" aria-hidden="true"></i>
+            </button>
+
+            <div class="nav__menu" id="navMenu">
+                <button
+                    class="nav__close"
+                    id="navClose"
+                    aria-label="Close navigation"
+                >
+                    <i class="ti ti-x" aria-hidden="true"></i>
+                </button>
+
+                <ul class="nav__links">
+                    <li><a href="#about" class="nav__link">About</a></li>
+                    <li><a href="#skills" class="nav__link">Skills</a></li>
+                    <li><a href="#experience" class="nav__link">Experience</a></li>
+                    <li><a href="#projects" class="nav__link">Projects</a></li>
+                    <li><a href="#certifications" class="nav__link">Certifications</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+
+                <!-- TODO: replace href="#" with your Google Drive link to enable it (e.g. https://drive.google.com/...). Until then, JS blocks clicks. -->
+                <a href="assets/Pratik_Nanda_CV_May'26.pdf" class="nav__cv cv-link" target="_blank" rel="noopener">
+                    <i class="ti ti-download" aria-hidden="true"></i>
+                    Download CV
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- =========================================================
+             HERO — two-column, typewriter, animated dashboard SVG
+             ========================================================= -->
+        <section class="hero" id="hero">
+            <div class="hero__grid-bg" aria-hidden="true"></div>
+
+            <div class="container hero__inner">
+                <div class="hero__left">
+                    <div class="hero__pill" data-animate>
+                        <span class="hero__pill-dot"></span>
+                        <span>✦ Open to Opportunities</span>
+                    </div>
+
+                    <h1 class="hero__name" data-animate>Pratik Nanda</h1>
+
+                    <p class="hero__title" data-animate>
+                        I'm a <span class="hero__typewriter" id="typewriter" aria-live="polite">Data Analyst</span><span class="hero__caret" aria-hidden="true"></span>
+                    </p>
+
+                    <p class="hero__tagline" data-animate>
+                        Transforming operational data into intelligence &mdash; one
+                        agentic workflow at a time. Data Analyst at the intersection
+                        of business intelligence, ITSM operations, and AI-driven
+                        automation.
+                    </p>
+
+                    <div class="hero__ctas" data-animate>
+                        <a href="#projects" class="btn btn--primary">
+                            View My Work
+                            <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <!-- TODO: replace href="#" with your Google Drive link to enable it. Until then, JS blocks clicks. -->
+                        <a href="assets/Pratik_Nanda_CV_May'26.pdf" class="btn btn--ghost cv-link" target="_blank" rel="noopener">
+                            <i class="ti ti-download" aria-hidden="true"></i>
+                            Download CV
+                        </a>
+                    </div>
+
+                    <div class="hero__social" data-animate>
+                        <a href="https://github.com/pratiknanda" target="_blank" rel="noopener" aria-label="GitHub" class="hero__social-link">
+                            <i class="ti ti-brand-github" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/pratik-nanda" target="_blank" rel="noopener" aria-label="LinkedIn" class="hero__social-link">
+                            <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="mailto:pratik.nanda99@gmail.com" aria-label="Email" class="hero__social-link">
+                            <i class="ti ti-mail" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero__right" data-animate>
+                    <!-- Animated dashboard mockup SVG -->
+                    <div class="dashboard" aria-hidden="true">
+                        <svg class="dashboard__svg" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Window chrome -->
+                            <rect x="0" y="0" width="500" height="420" rx="20" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+                            <rect x="0" y="0" width="500" height="44" rx="20" fill="#f3f4f6"/>
+                            <rect x="0" y="24" width="500" height="20" fill="#f3f4f6"/>
+                            <circle cx="22" cy="22" r="5" fill="#e5e7eb"/>
+                            <circle cx="42" cy="22" r="5" fill="#e5e7eb"/>
+                            <circle cx="62" cy="22" r="5" fill="#e5e7eb"/>
+                            <rect x="180" y="14" width="140" height="16" rx="8" fill="#e5e7eb"/>
+
+                            <!-- Title -->
+                            <text x="28" y="80" font-family="Plus Jakarta Sans, sans-serif" font-size="15" font-weight="700" fill="#0f1a14">Performance Overview</text>
+                            <text x="28" y="98" font-family="DM Sans, sans-serif" font-size="11" fill="#9ca3af">Real-time analytics</text>
+
+                            <!-- KPI Card -->
+                            <rect x="28" y="118" width="200" height="108" rx="14" fill="#e8f5ee"/>
+                            <text x="44" y="142" font-family="DM Sans, sans-serif" font-size="11" font-weight="500" fill="#2d7a4f">TOTAL RECORDS</text>
+                            <text x="44" y="190" font-family="Plus Jakarta Sans, sans-serif" font-size="40" font-weight="800" fill="#1a5c35" class="dashboard__kpi" id="dashboardKpi" data-count="3927">0</text>
+                            <text x="44" y="212" font-family="DM Sans, sans-serif" font-size="11" fill="#2d7a4f">▲ 12.4% this week</text>
+
+                            <!-- Donut chart -->
+                            <g transform="translate(360, 170)">
+                                <circle r="52" fill="none" stroke="#f3f4f6" stroke-width="14"/>
+                                <circle class="dashboard__donut" r="52" fill="none" stroke="#1a5c35" stroke-width="14" stroke-linecap="round" stroke-dasharray="260 326" transform="rotate(-90)"/>
+                                <circle r="52" fill="none" stroke="#4caf7d" stroke-width="14" stroke-linecap="round" stroke-dasharray="48 326" stroke-dashoffset="-262" transform="rotate(-90)"/>
+                                <text text-anchor="middle" dy="-4" font-family="Plus Jakarta Sans, sans-serif" font-size="22" font-weight="800" fill="#0f1a14">82%</text>
+                                <text text-anchor="middle" dy="16" font-family="DM Sans, sans-serif" font-size="10" fill="#9ca3af">SLA Met</text>
+                            </g>
+
+                            <!-- Bar chart -->
+                            <g transform="translate(28, 256)">
+                                <text font-family="DM Sans, sans-serif" font-size="11" font-weight="500" fill="#4b5563">Weekly Trend</text>
+                                <text x="380" font-family="DM Sans, sans-serif" font-size="10" fill="#9ca3af" text-anchor="end">7 days</text>
+
+                                <g transform="translate(0, 16)">
+                                    <rect class="dashboard__bar" x="0"   y="60" width="44" height="50" rx="3" fill="#4caf7d"/>
+                                    <rect class="dashboard__bar" x="58"  y="35" width="44" height="75" rx="3" fill="#4caf7d"/>
+                                    <rect class="dashboard__bar" x="116" y="18" width="44" height="92" rx="3" fill="#1a5c35"/>
+                                    <rect class="dashboard__bar" x="174" y="42" width="44" height="68" rx="3" fill="#4caf7d"/>
+                                    <rect class="dashboard__bar" x="232" y="22" width="44" height="88" rx="3" fill="#1a5c35"/>
+                                    <rect class="dashboard__bar" x="290" y="38" width="44" height="72" rx="3" fill="#4caf7d"/>
+                                    <rect class="dashboard__bar" x="348" y="8"  width="44" height="102" rx="3" fill="#1a5c35"/>
+                                    <line x1="0" y1="116" x2="392" y2="116" stroke="#e5e7eb" stroke-width="1"/>
+                                </g>
+                            </g>
+
+                            <!-- Legend -->
+                            <g transform="translate(28, 400)">
+                                <circle r="4" cx="6" cy="-4" fill="#1a5c35"/>
+                                <text x="20" font-family="DM Sans, sans-serif" font-size="10" fill="#4b5563">Completed</text>
+                                <circle r="4" cx="106" cy="-4" fill="#4caf7d"/>
+                                <text x="120" font-family="DM Sans, sans-serif" font-size="10" fill="#4b5563">In Progress</text>
+                            </g>
+                        </svg>
+
+                        <!-- Floating accent chip -->
+                        <div class="dashboard__chip dashboard__chip--top" aria-hidden="true">
+                            <i class="ti ti-trending-up"></i>
+                            <span>+24% efficiency</span>
+                        </div>
+                        <div class="dashboard__chip dashboard__chip--bottom" aria-hidden="true">
+                            <i class="ti ti-robot"></i>
+                            <span>AI Agent Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             01 ABOUT — bio + animated impact numbers + marquee
+             ========================================================= -->
+        <section class="section section--alt about" id="about">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">01 &middot; About</span>
+                    <h2 class="section__title">
+                        Behind the dashboards,<br />
+                        the <span class="section__title-accent">agents</span>, and the audits.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <div class="about__grid">
+                    <div class="about__bio" data-animate>
+                        <p class="about__lead">
+                            Data Analyst with 4.5+ years at Infosys, sitting at the
+                            intersection of business intelligence, ITSM operations, and
+                            AI-driven automation.
+                        </p>
+                        <p>
+                            I don't just build dashboards &mdash; I architect the data
+                            pipelines, audit frameworks, and agentic workflows behind
+                            them. My work spans from Power BI reporting for global
+                            stakeholders to building multi-agent AI systems with CrewAI
+                            and LangChain, workflow automation with n8n and Make, and
+                            RAG-powered customer support agents.
+                        </p>
+                        <p>
+                            I've led teams, owned delivery end-to-end, and consistently
+                            turned operational chaos into structured, automated
+                            intelligence. Currently deepening my edge in Agentic AI, MCP
+                            (Model Context Protocol), and scalable data engineering
+                            &mdash; with a focus on building systems that think, not
+                            just report.
+                        </p>
+                    </div>
+
+                    <div class="about__impact" data-animate>
+                        <div class="impact-card">
+                            <div class="impact-card__value">
+                                <span class="impact-card__number" data-count="4.5" data-decimals="1">0</span>
+                                <span class="impact-card__suffix">+</span>
+                            </div>
+                            <p class="impact-card__label">Years of Experience</p>
+                        </div>
+
+                        <div class="impact-card">
+                            <div class="impact-card__value">
+                                <span class="impact-card__number" data-count="10">0</span>
+                                <span class="impact-card__suffix">+</span>
+                            </div>
+                            <p class="impact-card__label">Power BI Dashboards Built</p>
+                        </div>
+
+                        <div class="impact-card">
+                            <div class="impact-card__value">
+                                <span class="impact-card__number" data-count="4000">0</span>
+                                <span class="impact-card__suffix">+</span>
+                            </div>
+                            <p class="impact-card__label">Alerts Migrated</p>
+                        </div>
+
+                        <div class="impact-card">
+                            <div class="impact-card__value">
+                                <span class="impact-card__number" data-count="8">0</span>
+                            </div>
+                            <p class="impact-card__label">Team Members Led</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Currently exploring: marquee strip -->
+                <div class="exploring" data-animate>
+                    <span class="exploring__label">
+                        <i class="ti ti-sparkles" aria-hidden="true"></i>
+                        Currently exploring
+                    </span>
+                    <div class="marquee">
+                        <div class="marquee__track">
+                            <span>Agentic AI</span><span class="marquee__dot">●</span>
+                            <span>RAG Pipelines</span><span class="marquee__dot">●</span>
+                            <span>Data Engineering</span><span class="marquee__dot">●</span>
+                            <span>Model Context Protocol</span><span class="marquee__dot">●</span>
+                            <span>Smart Voice Agents</span><span class="marquee__dot">●</span>
+                            <span>n8n Workflows</span><span class="marquee__dot">●</span>
+                            <!-- Duplicate for seamless loop -->
+                            <span>Agentic AI</span><span class="marquee__dot">●</span>
+                            <span>RAG Pipelines</span><span class="marquee__dot">●</span>
+                            <span>Data Engineering</span><span class="marquee__dot">●</span>
+                            <span>Model Context Protocol</span><span class="marquee__dot">●</span>
+                            <span>Smart Voice Agents</span><span class="marquee__dot">●</span>
+                            <span>n8n Workflows</span><span class="marquee__dot">●</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             02 SKILLS — tabs + tool cards + logo marquee
+             ========================================================= -->
+        <section class="section skills" id="skills">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">02 &middot; Skills &amp; Toolkit</span>
+                    <h2 class="section__title">
+                        The full stack &mdash; from <span class="section__title-accent">data</span> to <span class="section__title-accent">agents</span>.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <div class="skills__tabs" role="tablist" data-animate>
+                    <button class="skills__tab is-active" role="tab" aria-selected="true" data-tab="ai">
+                        <i class="ti ti-robot" aria-hidden="true"></i>
+                        AI &amp; Automation
+                    </button>
+                    <button class="skills__tab" role="tab" aria-selected="false" data-tab="data">
+                        <i class="ti ti-chart-bar" aria-hidden="true"></i>
+                        Data &amp; BI
+                    </button>
+                    <button class="skills__tab" role="tab" aria-selected="false" data-tab="itsm">
+                        <i class="ti ti-headset" aria-hidden="true"></i>
+                        ITSM &amp; Ops
+                    </button>
+                    <button class="skills__tab" role="tab" aria-selected="false" data-tab="leadership">
+                        <i class="ti ti-users" aria-hidden="true"></i>
+                        Leadership
+                    </button>
+                </div>
+
+                <!-- ============ AI & Automation ============ -->
+                <div class="skills__panel is-active" data-panel="ai" data-animate>
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-robot" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">CrewAI</h4>
+                            <p class="tool-card__desc">Multi-agent orchestration in Python.</p>
+                        </div>
+                        <div class="tool-card">
+                            <img class="tool-card__logo" src="https://cdn.simpleicons.org/langchain/1a5c35" alt="" />
+                            <h4 class="tool-card__name">LangChain</h4>
+                            <p class="tool-card__desc">LLM chaining, tools, and memory.</p>
+                        </div>
+                        <div class="tool-card">
+                            <img class="tool-card__logo" src="https://cdn.simpleicons.org/n8n/1a5c35" alt="" />
+                            <h4 class="tool-card__name">n8n</h4>
+                            <p class="tool-card__desc">Visual workflow automation.</p>
+                        </div>
+                        <div class="tool-card">
+                            <img class="tool-card__logo" src="https://cdn.simpleicons.org/make/1a5c35" alt="" />
+                            <h4 class="tool-card__name">Make</h4>
+                            <p class="tool-card__desc">No-code scenario builder.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-plug-connected" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">MCP</h4>
+                            <p class="tool-card__desc">Model Context Protocol integrations.</p>
+                        </div>
+                        <div class="tool-card">
+                            <img class="tool-card__logo" src="https://cdn.simpleicons.org/python/1a5c35" alt="" />
+                            <h4 class="tool-card__name">Python</h4>
+                            <p class="tool-card__desc">Primary language for AI &amp; data.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-microphone" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Voice Agents</h4>
+                            <p class="tool-card__desc">Smart voice interface design.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-users-group" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">AI Employees</h4>
+                            <p class="tool-card__desc">Custom autonomous AI workers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ Data & BI ============ -->
+                <div class="skills__panel" data-panel="data">
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-chart-pie" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Power BI</h4>
+                            <p class="tool-card__desc">DAX, modeling, executive dashboards.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-table" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Advanced Excel</h4>
+                            <p class="tool-card__desc">VBA, macros, automation scripts.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-database" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">SQL</h4>
+                            <p class="tool-card__desc">CTEs, window functions, modeling.</p>
+                        </div>
+                        <div class="tool-card">
+                            <img class="tool-card__logo" src="https://cdn.simpleicons.org/python/1a5c35" alt="" />
+                            <h4 class="tool-card__name">Python</h4>
+                            <p class="tool-card__desc">EDA, scripting, automation.</p>
+                        </div>
+                        <div class="tool-card">
+                            <img class="tool-card__logo" src="https://cdn.simpleicons.org/pandas/1a5c35" alt="" />
+                            <h4 class="tool-card__name">Pandas</h4>
+                            <p class="tool-card__desc">Tabular analysis at scale.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-math-function" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">DAX</h4>
+                            <p class="tool-card__desc">Measures, time intelligence, RLS.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-chart-line" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">EDA</h4>
+                            <p class="tool-card__desc">Exploratory analysis &amp; insights.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-schema" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Data Modeling</h4>
+                            <p class="tool-card__desc">STAR schema &amp; semantic layers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ ITSM & Ops ============ -->
+                <div class="skills__panel" data-panel="itsm">
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-server-cog" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">ServiceNow</h4>
+                            <p class="tool-card__desc">Tickets, audits, workflow design.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-ticket" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Wolken</h4>
+                            <p class="tool-card__desc">Reporting &amp; ticket analytics.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-license" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">ITIL Framework</h4>
+                            <p class="tool-card__desc">Process &amp; service alignment.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Incident Mgmt</h4>
+                            <p class="tool-card__desc">Triage, escalation, RCA.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-git-pull-request" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Change Mgmt</h4>
+                            <p class="tool-card__desc">CAB, risk, rollback planning.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-clipboard-check" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Service Requests</h4>
+                            <p class="tool-card__desc">Catalog &amp; fulfillment audit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ Leadership ============ -->
+                <div class="skills__panel" data-panel="leadership">
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-users" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Team Mentorship</h4>
+                            <p class="tool-card__desc">Mentored 8+ engineers on tooling.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-handshake" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Stakeholder Coord.</h4>
+                            <p class="tool-card__desc">Bi-weekly status &amp; alignment.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-clipboard-data" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Process Audit</h4>
+                            <p class="tool-card__desc">Compliance &amp; optimization frameworks.</p>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-card__logo tool-card__logo--icon">
+                                <i class="ti ti-presentation" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="tool-card__name">Delivery Ownership</h4>
+                            <p class="tool-card__desc">End-to-end project leadership.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech stack: pill ticker with consistent Tabler icons -->
+                <div class="tech-marquee" data-animate>
+                    <div class="tech-marquee__header">
+                        <span class="tech-marquee__label">
+                            <i class="ti ti-stack-2" aria-hidden="true"></i>
+                            The full tech stack
+                        </span>
+                        <span class="tech-marquee__hint">Always in motion</span>
+                    </div>
+                    <div class="tech-marquee__viewport">
+                        <div class="tech-marquee__track">
+                            <span class="tech-pill"><i class="ti ti-brand-python"></i>Python</span>
+                            <span class="tech-pill"><i class="ti ti-chart-pie"></i>Power BI</span>
+                            <span class="tech-pill"><i class="ti ti-database"></i>SQL</span>
+                            <span class="tech-pill"><i class="ti ti-table"></i>Excel</span>
+                            <span class="tech-pill"><i class="ti ti-table-import"></i>Pandas</span>
+                            <span class="tech-pill"><i class="ti ti-link"></i>LangChain</span>
+                            <span class="tech-pill"><i class="ti ti-robot"></i>CrewAI</span>
+                            <span class="tech-pill"><i class="ti ti-share-3"></i>n8n</span>
+                            <span class="tech-pill"><i class="ti ti-puzzle"></i>Make</span>
+                            <span class="tech-pill"><i class="ti ti-plug-connected"></i>MCP</span>
+                            <span class="tech-pill"><i class="ti ti-server-cog"></i>ServiceNow</span>
+                            <span class="tech-pill"><i class="ti ti-brand-azure"></i>Azure</span>
+                            <span class="tech-pill"><i class="ti ti-brand-openai"></i>OpenAI</span>
+                            <span class="tech-pill"><i class="ti ti-math-function"></i>DAX</span>
+                            <span class="tech-pill"><i class="ti ti-license"></i>ITIL</span>
+                            <!-- Duplicate set for seamless loop -->
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-brand-python"></i>Python</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-chart-pie"></i>Power BI</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-database"></i>SQL</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-table"></i>Excel</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-table-import"></i>Pandas</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-link"></i>LangChain</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-robot"></i>CrewAI</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-share-3"></i>n8n</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-puzzle"></i>Make</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-plug-connected"></i>MCP</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-server-cog"></i>ServiceNow</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-brand-azure"></i>Azure</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-brand-openai"></i>OpenAI</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-math-function"></i>DAX</span>
+                            <span class="tech-pill" aria-hidden="true"><i class="ti ti-license"></i>ITIL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             03 EXPERIENCE — premium timeline, sticky labels, checkmarks
+             ========================================================= -->
+        <section class="section section--alt experience" id="experience">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">03 &middot; Experience</span>
+                    <h2 class="section__title">
+                        Four and a half years, <span class="section__title-accent">one company</span>, four roles.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <ol class="timeline">
+                    <!-- =====================================================
+                         ADD NEW EXPERIENCE ENTRY:
+                         Copy the entire <li class="timeline__item">…</li>
+                         block below and paste after the closing </li> tag.
+                         Mark the most recent role with `timeline__item--current`
+                         to get the pulsing node.
+                         ===================================================== -->
+                    <li class="timeline__item timeline__item--current" data-animate>
+                        <div class="timeline__node"></div>
+                        <aside class="timeline__meta">
+                            <span class="timeline__years">2025 &mdash; Present</span>
+                            <span class="timeline__company">Infosys</span>
+                            <span class="timeline__location">Hyderabad, India</span>
+                        </aside>
+                        <article class="timeline__card">
+                            <div class="timeline__card-head">
+                                <span class="timeline__pill timeline__pill--current">
+                                    <span class="timeline__pill-dot"></span>
+                                    Current Role
+                                </span>
+                                <h3 class="timeline__role">Technology Analyst</h3>
+                                <p class="timeline__sub">Data Analyst &middot; Process Audit &amp; Delivery</p>
+                            </div>
+                            <ul class="timeline__bullets">
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Architected 10+ Power BI dashboards using DAX to track SLA performance and ticket trends.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Became primary POC for the Wolken tool &mdash; report generation, distribution, and ticket data analysis.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Implemented Excel scripts and macros that reduced manual reporting overhead by 60%.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Developed a custom Chrome extension (with Copilot) to map 150+ business services.</li>
+                            </ul>
+                            <div class="timeline__tags">
+                                <span class="tag tag--green">Power BI</span>
+                                <span class="tag tag--green">DAX</span>
+                                <span class="tag tag--green">Wolken</span>
+                                <span class="tag tag--green">Excel VBA</span>
+                                <span class="tag tag--green">Chrome Ext.</span>
+                            </div>
+                        </article>
+                    </li>
+
+                    <li class="timeline__item" data-animate>
+                        <div class="timeline__node"></div>
+                        <aside class="timeline__meta">
+                            <span class="timeline__years">2023 &mdash; 2025</span>
+                            <span class="timeline__company">Infosys</span>
+                            <span class="timeline__location">Hyderabad, India</span>
+                        </aside>
+                        <article class="timeline__card">
+                            <div class="timeline__card-head">
+                                <h3 class="timeline__role">Senior Systems Engineer</h3>
+                                <p class="timeline__sub">Audit Lead &middot; Data Validation Delivery</p>
+                            </div>
+                            <ul class="timeline__bullets">
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Led a team of 8 to 100% accuracy on a large-scale client data validation project.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Designed standardized audit templates and compliance frameworks adopted across engagements.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Acted as liaison between technical teams and stakeholders via bi-weekly calls and SharePoint docs.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Mentored new team members on auditing tools and advanced Excel reporting.</li>
+                            </ul>
+                            <div class="timeline__tags">
+                                <span class="tag tag--gold">🏆 INSTA Rise Award</span>
+                                <span class="tag tag--green">Team Lead</span>
+                                <span class="tag tag--green">Excel</span>
+                                <span class="tag tag--green">SharePoint</span>
+                                <span class="tag tag--green">Audit Frameworks</span>
+                            </div>
+                        </article>
+                    </li>
+
+                    <li class="timeline__item" data-animate>
+                        <div class="timeline__node"></div>
+                        <aside class="timeline__meta">
+                            <span class="timeline__years">2022 &mdash; 2023</span>
+                            <span class="timeline__company">Infosys</span>
+                            <span class="timeline__location">Hyderabad, India</span>
+                        </aside>
+                        <article class="timeline__card">
+                            <div class="timeline__card-head">
+                                <h3 class="timeline__role">Systems Engineer</h3>
+                                <p class="timeline__sub">ServiceNow Audit &middot; Broadcom Engagement</p>
+                            </div>
+                            <ul class="timeline__bullets">
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Audited ServiceNow tickets for the Broadcom project &mdash; timelines, work notes, and field accuracy.</li>
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Used Excel-based audit templates to track quality metrics and surface improvement areas.</li>
+                            </ul>
+                            <div class="timeline__tags">
+                                <span class="tag tag--green">ServiceNow</span>
+                                <span class="tag tag--green">Excel</span>
+                                <span class="tag tag--green">Quality Audit</span>
+                            </div>
+                        </article>
+                    </li>
+
+                    <li class="timeline__item" data-animate>
+                        <div class="timeline__node"></div>
+                        <aside class="timeline__meta">
+                            <span class="timeline__years">2021 &mdash; 2022</span>
+                            <span class="timeline__company">Infosys</span>
+                            <span class="timeline__location">Mysuru, India</span>
+                        </aside>
+                        <article class="timeline__card">
+                            <div class="timeline__card-head">
+                                <h3 class="timeline__role">Systems Engineer Trainee</h3>
+                                <p class="timeline__sub">IMS Windows Stream &middot; Foundation Training</p>
+                            </div>
+                            <ul class="timeline__bullets">
+                                <li><i class="ti ti-check" aria-hidden="true"></i> Completed intensive training in Java, SQL, and Windows Administration.</li>
+                            </ul>
+                            <div class="timeline__tags">
+                                <span class="tag tag--green">Java</span>
+                                <span class="tag tag--green">SQL</span>
+                                <span class="tag tag--green">Windows Admin</span>
+                            </div>
+                        </article>
+                    </li>
+                    <!-- ===== END OF EXPERIENCE TIMELINE ===== -->
+                </ol>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             04 PROJECTS — 2-col grid, unique SVG headers per project
+             ========================================================= -->
+        <section class="section projects" id="projects">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">04 &middot; Selected Projects</span>
+                    <h2 class="section__title">
+                        A cross-section of <span class="section__title-accent">analytics</span>, AI agents, and platform work.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <div class="projects__grid">
+
+                    <!-- =====================================================
+                         ADD NEW PROJECT CARD:
+                         Copy the entire <article class="project-card">…</article>
+                         block (between START / END markers) and paste it
+                         directly before the END marker.
+                         Pick one of these visual variants for the top of the
+                         card by setting the class on .project-card__visual:
+                           project-card__visual--nodes      (AI / agents)
+                           project-card__visual--bars       (analytics)
+                           project-card__visual--pipeline   (automation)
+                           project-card__visual--donut      (BI / KPI)
+                           project-card__visual--code       (tools / code)
+                         To preserve staggered reveals, increment
+                         data-reveal-delay by 100 (0, 100, 200, 300, 400…).
+                         ===================================================== -->
+
+                    <!-- ▼ START: PROJECT CARDS ▼ -->
+
+                    <article class="project-card" data-animate>
+                        <div class="project-card__visual project-card__visual--nodes">
+                            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <defs>
+                                    <radialGradient id="nodeGrad" cx="50%" cy="50%">
+                                        <stop offset="0%" stop-color="#4caf7d"/>
+                                        <stop offset="100%" stop-color="#1a5c35"/>
+                                    </radialGradient>
+                                </defs>
+                                <g stroke="#9ca3af" stroke-width="1" stroke-dasharray="3 3" fill="none" opacity="0.5">
+                                    <line x1="180" y1="90" x2="80" y2="50"/>
+                                    <line x1="180" y1="90" x2="80" y2="130"/>
+                                    <line x1="180" y1="90" x2="280" y2="50"/>
+                                    <line x1="180" y1="90" x2="280" y2="130"/>
+                                    <line x1="80" y1="50" x2="80" y2="130"/>
+                                    <line x1="280" y1="50" x2="280" y2="130"/>
+                                </g>
+                                <circle cx="180" cy="90" r="22" fill="url(#nodeGrad)" class="node-pulse"/>
+                                <circle cx="80" cy="50" r="14" fill="#1a5c35"/>
+                                <circle cx="80" cy="130" r="14" fill="#1a5c35"/>
+                                <circle cx="280" cy="50" r="14" fill="#4caf7d"/>
+                                <circle cx="280" cy="130" r="14" fill="#4caf7d"/>
+                                <text x="180" y="94" text-anchor="middle" fill="#fff" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="700">CREW</text>
+                            </svg>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__index">P/01</div>
+                            <h3 class="project-card__title">AI Agents with CrewAI</h3>
+                            <p class="project-card__description">
+                                Built multi-agent AI systems using CrewAI and Python to
+                                automate complex, multi-step workflows &mdash;
+                                coordinating specialized agents that plan, act, and hand
+                                off work.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>Python</li>
+                                <li>CrewAI</li>
+                                <li>LangChain</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__footer">
+                            <a href="#" class="project-card__link">
+                                View Project
+                                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-animate>
+                        <div class="project-card__visual project-card__visual--code">
+                            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect x="40" y="30" width="280" height="120" rx="8" fill="#0f1a14"/>
+                                <circle cx="56" cy="46" r="3" fill="#4caf7d"/>
+                                <circle cx="68" cy="46" r="3" fill="#f59e0b"/>
+                                <circle cx="80" cy="46" r="3" fill="#e5e7eb" opacity="0.3"/>
+                                <rect x="56" y="62" width="80" height="6" rx="2" fill="#4caf7d" opacity="0.8"/>
+                                <rect x="56" y="76" width="200" height="6" rx="2" fill="#e5e7eb" opacity="0.4"/>
+                                <rect x="68" y="90" width="160" height="6" rx="2" fill="#e5e7eb" opacity="0.3"/>
+                                <rect x="68" y="104" width="180" height="6" rx="2" fill="#4caf7d" opacity="0.6"/>
+                                <rect x="56" y="118" width="120" height="6" rx="2" fill="#e5e7eb" opacity="0.3"/>
+                                <rect x="56" y="132" width="60" height="6" rx="2" fill="#4caf7d" opacity="0.8"/>
+                            </svg>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__index">P/02</div>
+                            <h3 class="project-card__title">Claude Code Ecosystem</h3>
+                            <p class="project-card__description">
+                                A suite of productivity tools &mdash; Artifact Locator,
+                                Lookup Tool, and Prompt Vault &mdash; that streamline
+                                AI-driven coding workflows and make Claude Code feel
+                                native to my day.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>Claude AI</li>
+                                <li>JavaScript</li>
+                                <li>Tooling</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__footer">
+                            <a href="#" class="project-card__link">
+                                View Project
+                                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-animate>
+                        <div class="project-card__visual project-card__visual--pipeline">
+                            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <g fill="none" stroke="#1a5c35" stroke-width="2" stroke-linecap="round">
+                                    <line x1="80" y1="90" x2="130" y2="90"/>
+                                    <line x1="180" y1="90" x2="230" y2="90"/>
+                                    <polyline points="125,84 130,90 125,96"/>
+                                    <polyline points="225,84 230,90 225,96"/>
+                                </g>
+                                <rect x="20" y="68" width="60" height="44" rx="8" fill="#ffffff" stroke="#1a5c35" stroke-width="1.5"/>
+                                <rect x="130" y="68" width="50" height="44" rx="8" fill="#e8f5ee" stroke="#1a5c35" stroke-width="1.5"/>
+                                <rect x="230" y="68" width="60" height="44" rx="8" fill="#1a5c35"/>
+                                <rect x="290" y="36" width="50" height="36" rx="6" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5"/>
+                                <rect x="290" y="108" width="50" height="36" rx="6" fill="#ffffff" stroke="#4caf7d" stroke-width="1.5"/>
+                                <g fill="none" stroke="#4caf7d" stroke-width="1.5" stroke-dasharray="3 3">
+                                    <line x1="290" y1="54" x2="260" y2="90"/>
+                                    <line x1="290" y1="126" x2="260" y2="90"/>
+                                </g>
+                                <text x="50" y="94" text-anchor="middle" fill="#1a5c35" font-family="DM Sans, sans-serif" font-size="9" font-weight="700">ALERT</text>
+                                <text x="155" y="94" text-anchor="middle" fill="#1a5c35" font-family="DM Sans, sans-serif" font-size="9" font-weight="700">PARSE</text>
+                                <text x="260" y="94" text-anchor="middle" fill="#ffffff" font-family="DM Sans, sans-serif" font-size="9" font-weight="700">RUNBOOK</text>
+                                <text x="315" y="58" text-anchor="middle" fill="#4caf7d" font-family="DM Sans, sans-serif" font-size="8" font-weight="600">P1</text>
+                                <text x="315" y="130" text-anchor="middle" fill="#4caf7d" font-family="DM Sans, sans-serif" font-size="8" font-weight="600">P2</text>
+                            </svg>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__index">P/03</div>
+                            <h3 class="project-card__title">Alert Runbook Migration</h3>
+                            <p class="project-card__description">
+                                Spearheaded runbook creation for 4,000+ alerts during a
+                                client platform migration &mdash; zero downtime, full
+                                coverage, and a template the team kept using afterward.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>ServiceNow</li>
+                                <li>Excel</li>
+                                <li>Documentation</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__footer">
+                            <a href="#" class="project-card__link">
+                                View Project
+                                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-animate>
+                        <div class="project-card__visual project-card__visual--donut">
+                            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <g transform="translate(110, 90)">
+                                    <circle r="50" fill="none" stroke="#e5e7eb" stroke-width="14"/>
+                                    <circle r="50" fill="none" stroke="#1a5c35" stroke-width="14" stroke-linecap="round" stroke-dasharray="180 314" transform="rotate(-90)"/>
+                                    <circle r="50" fill="none" stroke="#4caf7d" stroke-width="14" stroke-linecap="round" stroke-dasharray="80 314" stroke-dashoffset="-182" transform="rotate(-90)"/>
+                                    <text text-anchor="middle" dy="-3" fill="#0f1a14" font-family="Plus Jakarta Sans, sans-serif" font-size="20" font-weight="800">68%</text>
+                                    <text text-anchor="middle" dy="16" fill="#9ca3af" font-family="DM Sans, sans-serif" font-size="10">Retention</text>
+                                </g>
+                                <g transform="translate(210, 50)">
+                                    <text fill="#9ca3af" font-family="DM Sans, sans-serif" font-size="10" font-weight="500">REVENUE</text>
+                                    <text y="32" fill="#1a5c35" font-family="Plus Jakarta Sans, sans-serif" font-size="28" font-weight="800">$2.4M</text>
+                                    <text y="50" fill="#4caf7d" font-family="DM Sans, sans-serif" font-size="10">▲ 18% QoQ</text>
+                                </g>
+                                <g transform="translate(210, 110)">
+                                    <text fill="#9ca3af" font-family="DM Sans, sans-serif" font-size="10" font-weight="500">ORDERS</text>
+                                    <text y="22" fill="#0f1a14" font-family="Plus Jakarta Sans, sans-serif" font-size="20" font-weight="700">12,847</text>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__index">P/04</div>
+                            <h3 class="project-card__title">E-commerce Analytics Platform</h3>
+                            <p class="project-card__description">
+                                Built a scalable STAR schema model and Power BI
+                                dashboard that uncovered revenue and retention insights
+                                for an e-commerce dataset &mdash; from raw tables to
+                                executive view.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>Python</li>
+                                <li>SQL</li>
+                                <li>Power BI</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__footer">
+                            <a href="#" class="project-card__link">
+                                View Project
+                                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-animate>
+                        <div class="project-card__visual project-card__visual--bars">
+                            <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <line x1="30" y1="150" x2="330" y2="150" stroke="#e5e7eb" stroke-width="1"/>
+                                <line x1="30" y1="30" x2="30" y2="150" stroke="#e5e7eb" stroke-width="1"/>
+                                <rect x="50"  y="100" width="28" height="50" rx="3" fill="#4caf7d"/>
+                                <rect x="88"  y="80"  width="28" height="70" rx="3" fill="#4caf7d"/>
+                                <rect x="126" y="60"  width="28" height="90" rx="3" fill="#1a5c35"/>
+                                <rect x="164" y="45"  width="28" height="105" rx="3" fill="#1a5c35"/>
+                                <rect x="202" y="70"  width="28" height="80" rx="3" fill="#4caf7d"/>
+                                <rect x="240" y="40"  width="28" height="110" rx="3" fill="#1a5c35"/>
+                                <rect x="278" y="55"  width="28" height="95" rx="3" fill="#4caf7d"/>
+                                <polyline points="64,95 102,72 140,52 178,38 216,62 254,30 292,48" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                                <g fill="#f59e0b">
+                                    <circle cx="64" cy="95" r="3"/>
+                                    <circle cx="102" cy="72" r="3"/>
+                                    <circle cx="140" cy="52" r="3"/>
+                                    <circle cx="178" cy="38" r="3"/>
+                                    <circle cx="216" cy="62" r="3"/>
+                                    <circle cx="254" cy="30" r="3"/>
+                                    <circle cx="292" cy="48" r="3"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-card__index">P/05</div>
+                            <h3 class="project-card__title">Customer Risk Analytics</h3>
+                            <p class="project-card__description">
+                                Analyzed 3,900+ records using EDA and predictive
+                                modeling, then delivered actionable risk dashboards that
+                                gave the business a clear view of who to watch and why.
+                            </p>
+                            <ul class="project-card__tags">
+                                <li>Python</li>
+                                <li>EDA</li>
+                                <li>Predictive Modeling</li>
+                                <li>Power BI</li>
+                            </ul>
+                        </div>
+                        <div class="project-card__footer">
+                            <a href="#" class="project-card__link">
+                                View Project
+                                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ▲ END: PROJECT CARDS ▲ -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             05 CERTIFICATIONS — horizontal scrollable row, shimmer
+             ========================================================= -->
+        <section class="section section--alt certifications" id="certifications">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">05 &middot; Certifications</span>
+                    <h2 class="section__title">
+                        Recognition &amp; <span class="section__title-accent">credentials</span>.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <div class="cert-scroll-hint" data-animate>
+                    <i class="ti ti-hand-finger" aria-hidden="true"></i>
+                    Scroll horizontally to browse
+                </div>
+
+                <div class="cert-scroller" data-animate>
+
+                    <!-- =====================================================
+                         ADD NEW CERTIFICATION CARD:
+                         Copy a full <article class="cert-card">…</article>
+                         block below (between the START / END markers) and
+                         paste it directly before the END marker.
+                         Available accent variants:
+                           cert-card--gold  (for awards)
+                           cert-card--blue  (for Azure / Microsoft)
+                           (no modifier)    (default green)
+                         ===================================================== -->
+
+                    <!-- ▼ START: CERT CARDS ▼ -->
+
+                    <article class="cert-card cert-card--gold">
+                        <div class="cert-card__icon">
+                            <i class="ti ti-trophy" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="cert-card__title">INSTA Rise Award</h3>
+                        <p class="cert-card__issuer">Infosys</p>
+                        <p class="cert-card__detail">Analytics, leadership &amp; process transformation</p>
+                        <span class="cert-card__badge">🏆 Award</span>
+                    </article>
+
+                    <article class="cert-card cert-card--blue">
+                        <div class="cert-card__icon">
+                            <i class="ti ti-brand-azure" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="cert-card__title">Azure Data Fundamentals</h3>
+                        <p class="cert-card__issuer">Microsoft &middot; DP-900</p>
+                        <p class="cert-card__detail">Cloud data services &amp; analytics</p>
+                        <span class="cert-card__badge">Microsoft Certified</span>
+                    </article>
+
+                    <article class="cert-card">
+                        <div class="cert-card__icon">
+                            <i class="ti ti-language" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="cert-card__title">EF SET English</h3>
+                        <p class="cert-card__issuer">Education First</p>
+                        <p class="cert-card__detail">63 / 100 &mdash; C1 Advanced</p>
+                        <span class="cert-card__badge">Certified</span>
+                    </article>
+
+                    <article class="cert-card">
+                        <div class="cert-card__icon">
+                            <i class="ti ti-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="cert-card__title">Full Stack Development</h3>
+                        <p class="cert-card__issuer">Advanced Certificate Program</p>
+                        <p class="cert-card__detail">Frontend, backend &amp; APIs</p>
+                        <span class="cert-card__badge">Completed</span>
+                    </article>
+
+                    <!-- ▲ END: CERT CARDS ▲ -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             06 AI TRAINING — 2x2 feature grid, Tabler icons, faint green
+             ========================================================= -->
+        <section class="section ai-training" id="ai-training">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">06 &middot; Specialized AI Training</span>
+                    <h2 class="section__title">
+                        Where I'm <span class="section__title-accent">sharpening</span> the edge.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <div class="ai-grid">
+                    <!-- =====================================================
+                         ADD NEW AI TRAINING CARD:
+                         Copy a full <article class="ai-card">…</article>
+                         block below and paste before the END marker.
+                         Swap the Tabler icon class for a fitting one
+                         (ti-brain, ti-robot, ti-microphone, ti-database…).
+                         ===================================================== -->
+
+                    <!-- ▼ START: AI TRAINING CARDS ▼ -->
+
+                    <article class="ai-card" data-animate>
+                        <div class="ai-card__icon">
+                            <i class="ti ti-brain" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ai-card__title">Agentic AI Mastery</h3>
+                        <p class="ai-card__desc">CrewAI &amp; LangChain in Python &mdash; multi-agent design patterns.</p>
+                        <a href="#" class="ai-card__arrow" aria-label="Learn more">
+                            <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="ai-card" data-animate>
+                        <div class="ai-card__icon">
+                            <i class="ti ti-robot" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ai-card__title">Automation Architect</h3>
+                        <p class="ai-card__desc">Make, n8n &amp; custom AI employees for production workflows.</p>
+                        <a href="#" class="ai-card__arrow" aria-label="Learn more">
+                            <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="ai-card" data-animate>
+                        <div class="ai-card__icon">
+                            <i class="ti ti-microphone" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ai-card__title">AI Interface Design</h3>
+                        <p class="ai-card__desc">Smart voice agents &amp; MCP (Model Context Protocol).</p>
+                        <a href="#" class="ai-card__arrow" aria-label="Learn more">
+                            <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="ai-card" data-animate>
+                        <div class="ai-card__icon">
+                            <i class="ti ti-database" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="ai-card__title">Advanced RAG</h3>
+                        <p class="ai-card__desc">Customer support agent with RAG pipelines &amp; LangChain.</p>
+                        <a href="#" class="ai-card__arrow" aria-label="Learn more">
+                            <i class="ti ti-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <!-- ▲ END: AI TRAINING CARDS ▲ -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             07 EDUCATION
+             ========================================================= -->
+        <section class="section section--alt education" id="education">
+            <div class="container">
+                <header class="section__header" data-animate>
+                    <span class="section__eyebrow">07 &middot; Education</span>
+                    <h2 class="section__title">
+                        Foundations in <span class="section__title-accent">engineering</span>.
+                    </h2>
+                    <span class="section__underline"></span>
+                </header>
+
+                <div class="education-card" data-animate>
+                    <div class="education-card__icon">
+                        <i class="ti ti-school" aria-hidden="true"></i>
+                    </div>
+                    <div class="education-card__body">
+                        <span class="education-card__years">2017 &mdash; 2021</span>
+                        <h3 class="education-card__degree">B.Tech in Electronics &amp; Communication Engineering</h3>
+                        <p class="education-card__institution">Vignana Bharathi Institute of Technology</p>
+                        <p class="education-card__location">
+                            <i class="ti ti-map-pin" aria-hidden="true"></i>
+                            Hyderabad, India
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             08 CONTACT — three cards with flip on hover
+             ========================================================= -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <header class="section__header section__header--center" data-animate>
+                    <span class="section__eyebrow">08 &middot; Contact</span>
+                    <h2 class="section__title section__title--xl">
+                        Let's build something <span class="section__title-accent">intelligent</span>.
+                    </h2>
+                    <span class="section__underline section__underline--center"></span>
+                    <p class="contact__lead">
+                        Open to roles and collaborations in data analytics, AI
+                        automation, and agentic systems. The best inbound is a clear
+                        note about the problem you're trying to solve.
+                    </p>
+                </header>
+
+                <div class="contact__cards" data-animate>
+                    <a href="mailto:pratik.nanda99@gmail.com" class="flip-card">
+                        <div class="flip-card__inner">
+                            <div class="flip-card__face flip-card__face--front">
+                                <i class="ti ti-mail" aria-hidden="true"></i>
+                                <span class="flip-card__label">Email</span>
+                                <span class="flip-card__value">pratik.nanda99@gmail.com</span>
+                            </div>
+                            <div class="flip-card__face flip-card__face--back">
+                                <i class="ti ti-send" aria-hidden="true"></i>
+                                <span class="flip-card__cta">Send a message</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/pratik-nanda" target="_blank" rel="noopener" class="flip-card">
+                        <div class="flip-card__inner">
+                            <div class="flip-card__face flip-card__face--front">
+                                <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+                                <span class="flip-card__label">LinkedIn</span>
+                                <span class="flip-card__value">linkedin.com/in/pratik-nanda</span>
+                            </div>
+                            <div class="flip-card__face flip-card__face--back">
+                                <i class="ti ti-external-link" aria-hidden="true"></i>
+                                <span class="flip-card__cta">Open profile</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/pratiknanda" target="_blank" rel="noopener" class="flip-card">
+                        <div class="flip-card__inner">
+                            <div class="flip-card__face flip-card__face--front">
+                                <i class="ti ti-brand-github" aria-hidden="true"></i>
+                                <span class="flip-card__label">GitHub</span>
+                                <span class="flip-card__value">github.com/pratiknanda</span>
+                            </div>
+                            <div class="flip-card__face flip-card__face--back">
+                                <i class="ti ti-external-link" aria-hidden="true"></i>
+                                <span class="flip-card__cta">View repos</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <p class="site-footer__brand">
+                <span class="site-footer__monogram">PN</span>
+                Pratik Nanda &middot; Hyderabad, India
+            </p>
+            <p class="site-footer__meta">
+                &copy; <span id="footerYear">2026</span> &middot;
+                <a href="#hero">Back to top</a>
+            </p>
+            <span class="site-footer__badge">
+                <i class="ti ti-sparkles" aria-hidden="true"></i>
+                Built with Claude Code
+            </span>
+        </div>
+    </footer>
+
+    <!-- Back-to-top button -->
+    <button
+        type="button"
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top"
+    >
+        <i class="ti ti-arrow-up" aria-hidden="true"></i>
     </button>
-  </nav>
 
-  <!-- ======================== HERO ======================== -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Open to New Opportunities
-      </div>
-      <div class="hero-intro">
-        <span class="hero-greeting">Hi, I'm</span>
-        <h1 class="hero-name">Pratik Nanda</h1>
-        <p class="hero-role">Data Analyst · Process Optimization · AI-driven Analytics</p>
-      </div>
-      <h2 class="hero-title">
-        Turning Data Into <span class="gradient-text">Operational Impact</span>
-      </h2>
-      <div class="typewriter-wrapper">
-        <span class="typewriter-prefix">I help organizations </span>
-        <span class="typewriter" id="typewriter"></span>
-        <span class="cursor-blink">|</span>
-      </div>
-      <p class="hero-desc">
-        Results-driven Data Analyst with 4+ years at Infosys delivering ITSM analytics, reporting automation, and operational process improvements. Expert in Power BI, Advanced Excel, ServiceNow, and AI-assisted automation.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          View My Work
-        </a>
-        <a href="#contact" class="btn btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Let's Connect
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num" data-target="10" data-suffix="+">0</span>
-          <span class="stat-label">Dashboards Built</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" data-target="8" data-suffix="">0</span>
-          <span class="stat-label">Team Led</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" data-target="60" data-suffix="%">0</span>
-          <span class="stat-label">Less Manual Work</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Dashboard Preview Visual -->
-    <div class="hero-visual">
-      <div class="dashboard-preview">
-        <div class="dash-header">
-          <div class="dash-title-row">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            ITSM Analytics Dashboard
-          </div>
-          <div class="dash-live">
-            <span class="live-dot"></span> LIVE
-          </div>
-        </div>
-
-        <div class="kpi-row">
-          <div class="kpi-card">
-            <span class="kpi-label">SLA Compliance</span>
-            <span class="kpi-value">98.2%</span>
-            <span class="kpi-delta up">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-              +4.1% vs last yr
-            </span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label">Automation Gain</span>
-            <span class="kpi-value">60%</span>
-            <span class="kpi-delta up">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-              Manual work saved
-            </span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label">Data Accuracy</span>
-            <span class="kpi-value">100%</span>
-            <span class="kpi-delta up">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
-              Validated
-            </span>
-          </div>
-        </div>
-
-        <div class="dash-charts">
-          <div class="chart-panel">
-            <div class="chart-label">SLA Compliance by Quarter</div>
-            <svg class="bar-chart-svg" viewBox="0 0 210 85" id="hero-bar-chart">
-              <defs>
-                <linearGradient id="barGrad1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.9"/>
-                  <stop offset="100%" stop-color="#2563eb" stop-opacity="0.7"/>
-                </linearGradient>
-                <linearGradient id="barGrad2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#2D6A4F" stop-opacity="0.95"/>
-                  <stop offset="100%" stop-color="#1A4433" stop-opacity="0.8"/>
-                </linearGradient>
-              </defs>
-              <!-- Grid lines -->
-              <line x1="0" y1="15" x2="210" y2="15" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
-              <line x1="0" y1="35" x2="210" y2="35" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
-              <line x1="0" y1="55" x2="210" y2="55" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
-              <!-- Bars (animated via JS) -->
-              <rect class="bar" x="5"  y="75" width="30" height="0" rx="3" fill="url(#barGrad1)" data-y="55" data-h="20"/>
-              <rect class="bar" x="48" y="75" width="30" height="0" rx="3" fill="url(#barGrad1)" data-y="42" data-h="33"/>
-              <rect class="bar" x="91" y="75" width="30" height="0" rx="3" fill="url(#barGrad1)" data-y="28" data-h="47"/>
-              <rect class="bar" x="134" y="75" width="30" height="0" rx="3" fill="url(#barGrad1)" data-y="14" data-h="61"/>
-              <rect class="bar" x="177" y="75" width="30" height="0" rx="3" fill="url(#barGrad2)" data-y="4"  data-h="71"/>
-              <!-- Labels -->
-              <text x="20"  y="82" text-anchor="middle" fill="#475569" font-size="7" font-family="Inter">Q1</text>
-              <text x="63"  y="82" text-anchor="middle" fill="#475569" font-size="7" font-family="Inter">Q2</text>
-              <text x="106" y="82" text-anchor="middle" fill="#475569" font-size="7" font-family="Inter">Q3</text>
-              <text x="149" y="82" text-anchor="middle" fill="#475569" font-size="7" font-family="Inter">Q4</text>
-              <text x="192" y="82" text-anchor="middle" fill="#2D6A4F" font-size="7" font-family="Inter" font-weight="600">Now</text>
-            </svg>
-          </div>
-          <div class="chart-panel">
-            <div class="chart-label">Ticket Resolution Trend</div>
-            <svg class="line-chart-svg" viewBox="0 0 200 75" id="hero-line-chart">
-              <defs>
-                <linearGradient id="lineAreaGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#2D6A4F" stop-opacity="0.25"/>
-                  <stop offset="100%" stop-color="#2D6A4F" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <!-- Grid -->
-              <line x1="0" y1="20" x2="200" y2="20" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
-              <line x1="0" y1="45" x2="200" y2="45" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
-              <!-- Area fill -->
-              <path class="line-area" d="M 0,65 L 25,58 L 50,54 L 75,46 L 100,38 L 125,30 L 150,22 L 175,15 L 200,9 L 200,65 Z"
-                fill="url(#lineAreaGrad)" opacity="0"/>
-              <!-- Line -->
-              <polyline class="sparkline" points="0,65 25,58 50,54 75,46 100,38 125,30 150,22 175,15 200,9"
-                fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- Dot -->
-              <circle cx="200" cy="9" r="4" fill="#2D6A4F" class="line-dot"/>
-              <circle cx="200" cy="9" r="8" fill="#2D6A4F" opacity="0.2" class="line-dot-ring"/>
-              <!-- Y labels -->
-              <text x="2" y="18"  fill="#475569" font-size="6" font-family="Inter">500</text>
-              <text x="2" y="43"  fill="#475569" font-size="6" font-family="Inter">250</text>
-              <text x="2" y="68"  fill="#475569" font-size="6" font-family="Inter">0</text>
-            </svg>
-          </div>
-        </div>
-
-        <div class="dash-footer">
-          <div class="dash-source">
-            <span class="source-dot"></span>
-            10+ dashboards · ServiceNow live
-          </div>
-          <div class="dash-tag">Power BI · ServiceNow</div>
-        </div>
-      </div>
-
-      <!-- Floating metric pills -->
-      <div class="metric-pill floating-a">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-        <span>Manual work reduced by <strong>60%</strong></span>
-      </div>
-      <div class="metric-pill floating-b">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>100% Data Accuracy</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== IMPACT BANNER ======================== -->
-  <div class="impact-banner" id="about">
-    <div class="container">
-      <div class="impact-grid">
-        <div class="impact-item fade-up">
-          <span class="impact-num" data-target="10" data-suffix="+">0</span>
-          <span class="impact-label">Power BI Dashboards</span>
-        </div>
-        <div class="impact-sep"></div>
-        <div class="impact-item fade-up">
-          <span class="impact-num" data-target="4000" data-suffix="+">0</span>
-          <span class="impact-label">Alerts Migrated</span>
-        </div>
-        <div class="impact-sep"></div>
-        <div class="impact-item fade-up">
-          <span class="impact-num" data-target="8" data-suffix="">0</span>
-          <span class="impact-label">Team Members Led</span>
-        </div>
-        <div class="impact-sep"></div>
-        <div class="impact-item fade-up">
-          <span class="impact-num" data-target="60" data-suffix="%">0</span>
-          <span class="impact-label">Manual Overhead Cut</span>
-        </div>
-        <div class="impact-sep"></div>
-        <div class="impact-item fade-up">
-          <span class="impact-num" data-target="100" data-suffix="%">0</span>
-          <span class="impact-label">Data Accuracy Achieved</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======================== ABOUT ======================== -->
-  <section class="section about-section">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-tag">
-          <span class="tag-dot"></span> About Me
-        </span>
-        <h2 class="section-title">Insights That <span class="gradient-text">Drive Operations</span></h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text fade-up">
-          <p>I'm a Data Analyst at Infosys with 4+ years turning raw operational data into actionable intelligence. I specialize in ITSM analytics, Power BI dashboarding, and automating reporting workflows — delivering measurable process improvements for global stakeholders.</p>
-          <p>I believe great analytics goes beyond the numbers — it's about eliminating manual effort, enabling faster decisions, and building tools that people actually use. From AI-assisted Chrome extensions to validated datasets with 100% accuracy, I bring both technical depth and business focus to every project.</p>
-
-          <div class="leadership-highlights">
-            <div class="lh-item">
-              <div class="lh-icon blue">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div>
-                <strong>Team Leadership</strong>
-                <span>Led a team of 8 in a 5-month data validation project delivering 100% accuracy, earning the INSTA Rise Award for process transformation.</span>
-              </div>
-            </div>
-            <div class="lh-item">
-              <div class="lh-icon green">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              </div>
-              <div>
-                <strong>Reporting Automation</strong>
-                <span>Automated reporting workflows via Excel macros and VBA, cutting manual overhead by 60% and ensuring 100% data consistency for global stakeholders.</span>
-              </div>
-            </div>
-            <div class="lh-item">
-              <div class="lh-icon amber">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <div>
-                <strong>Platform Migration</strong>
-                <span>Managed migration of 4,000+ alerts with runbook creation and automated mapping, ensuring zero downtime during the platform transition.</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="#" class="btn btn-primary" style="margin-top:2rem">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            Download Resume
-          </a>
-        </div>
-
-        <!-- Mini skills radar / domain cards -->
-        <div class="about-domain-grid fade-up">
-          <div class="domain-card">
-            <div class="domain-donut">
-              <svg viewBox="0 0 100 100" class="donut-svg">
-                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="9"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#3b82f6" stroke-width="9"
-                  stroke-dasharray="239" stroke-dashoffset="239" stroke-linecap="round"
-                  transform="rotate(-90 50 50)" class="donut-ring" data-pct="95"/>
-              </svg>
-              <div class="donut-center"><span class="donut-val">95%</span></div>
-            </div>
-            <h3>BI & Reporting</h3>
-            <p>Power BI, DAX, Excel, KPI Dashboards</p>
-          </div>
-          <div class="domain-card">
-            <div class="domain-donut">
-              <svg viewBox="0 0 100 100" class="donut-svg">
-                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="9"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#2D6A4F" stroke-width="9"
-                  stroke-dasharray="239" stroke-dashoffset="239" stroke-linecap="round"
-                  transform="rotate(-90 50 50)" class="donut-ring" data-pct="90"/>
-              </svg>
-              <div class="donut-center"><span class="donut-val">90%</span></div>
-            </div>
-            <h3>ITSM & Operations</h3>
-            <p>ServiceNow, ITIL, Incident & Change Mgmt</p>
-          </div>
-          <div class="domain-card">
-            <div class="domain-donut">
-              <svg viewBox="0 0 100 100" class="donut-svg">
-                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="9"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#f59e0b" stroke-width="9"
-                  stroke-dasharray="239" stroke-dashoffset="239" stroke-linecap="round"
-                  transform="rotate(-90 50 50)" class="donut-ring" data-pct="82"/>
-              </svg>
-              <div class="donut-center"><span class="donut-val">82%</span></div>
-            </div>
-            <h3>Automation & AI</h3>
-            <p>VBA Macros, AI Tools, Microsoft Copilot</p>
-          </div>
-          <div class="domain-card">
-            <div class="domain-donut">
-              <svg viewBox="0 0 100 100" class="donut-svg">
-                <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="9"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#8b5cf6" stroke-width="9"
-                  stroke-dasharray="239" stroke-dashoffset="239" stroke-linecap="round"
-                  transform="rotate(-90 50 50)" class="donut-ring" data-pct="85"/>
-              </svg>
-              <div class="donut-center"><span class="donut-val">85%</span></div>
-            </div>
-            <h3>Project Management</h3>
-            <p>Stakeholder Liaison, SharePoint, SDLC</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== SKILLS ======================== -->
-  <section class="section skills-section" id="skills">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-tag"><span class="tag-dot"></span> Technical Expertise</span>
-        <h2 class="section-title">Analytics & Operations <span class="gradient-text">Capability</span></h2>
-      </div>
-      <div class="skills-dashboard fade-up">
-        <!-- Row 1: Horizontal proficiency bars styled as BI chart -->
-        <div class="skills-chart-panel">
-          <div class="chart-panel-header">
-            <span>Proficiency Overview</span>
-            <div class="legend-row">
-              <span class="legend-item blue">Proficient</span>
-              <span class="legend-item green">Expert</span>
-            </div>
-          </div>
-          <div class="proficiency-bars">
-            <div class="prof-row">
-              <span class="prof-name">Power BI / DAX</span>
-              <div class="prof-track"><div class="prof-fill green-fill" data-width="95"></div></div>
-              <span class="prof-pct">95%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">Advanced Excel & VBA</span>
-              <div class="prof-track"><div class="prof-fill green-fill" data-width="92"></div></div>
-              <span class="prof-pct">92%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">ServiceNow / ITSM</span>
-              <div class="prof-track"><div class="prof-fill green-fill" data-width="90"></div></div>
-              <span class="prof-pct">90%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">SQL</span>
-              <div class="prof-track"><div class="prof-fill blue-fill" data-width="85"></div></div>
-              <span class="prof-pct">85%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">AI-Assisted Analytics</span>
-              <div class="prof-track"><div class="prof-fill blue-fill" data-width="80"></div></div>
-              <span class="prof-pct">80%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">Python (Data Analysis)</span>
-              <div class="prof-track"><div class="prof-fill blue-fill" data-width="72"></div></div>
-              <span class="prof-pct">72%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">dbt / Snowflake (Fundamentals)</span>
-              <div class="prof-track"><div class="prof-fill blue-fill" data-width="60"></div></div>
-              <span class="prof-pct">60%</span>
-            </div>
-            <div class="prof-row">
-              <span class="prof-name">SharePoint & Project Mgmt</span>
-              <div class="prof-track"><div class="prof-fill blue-fill" data-width="82"></div></div>
-              <span class="prof-pct">82%</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Skill category tiles -->
-        <div class="skill-tiles">
-          <div class="skill-tile">
-            <div class="tile-header amber-bg">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              Business Intelligence
-            </div>
-            <ul class="tile-skills">
-              <li><span class="skill-dot green"></span>Power BI &amp; DAX</li>
-              <li><span class="skill-dot green"></span>Advanced Excel (Macros)</li>
-              <li><span class="skill-dot green"></span>KPI Dashboarding</li>
-              <li><span class="skill-dot blue"></span>SLA Reporting</li>
-              <li><span class="skill-dot blue"></span>Data Modelling</li>
-            </ul>
-          </div>
-          <div class="skill-tile">
-            <div class="tile-header blue-bg">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-              ITSM & Operations
-            </div>
-            <ul class="tile-skills">
-              <li><span class="skill-dot green"></span>ServiceNow</li>
-              <li><span class="skill-dot green"></span>Incident Management</li>
-              <li><span class="skill-dot green"></span>Change Management</li>
-              <li><span class="skill-dot blue"></span>ITIL Framework</li>
-              <li><span class="skill-dot blue"></span>Wolken Ticketing</li>
-            </ul>
-          </div>
-          <div class="skill-tile">
-            <div class="tile-header green-bg">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-              Data Engineering
-            </div>
-            <ul class="tile-skills">
-              <li><span class="skill-dot green"></span>SQL</li>
-              <li><span class="skill-dot green"></span>Python (Data Analysis)</li>
-              <li><span class="skill-dot blue"></span>Snowflake (Fundamentals)</li>
-              <li><span class="skill-dot blue"></span>dbt (Fundamentals)</li>
-              <li><span class="skill-dot blue"></span>Data Validation &amp; Auditing</li>
-            </ul>
-          </div>
-          <div class="skill-tile">
-            <div class="tile-header purple-bg">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              Automation & AI
-            </div>
-            <ul class="tile-skills">
-              <li><span class="skill-dot green"></span>Excel VBA Automation</li>
-              <li><span class="skill-dot green"></span>AI-Assisted Analytics</li>
-              <li><span class="skill-dot green"></span>Microsoft Copilot</li>
-              <li><span class="skill-dot blue"></span>Chrome Extension Dev</li>
-              <li><span class="skill-dot blue"></span>Process Automation</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== PROJECTS ======================== -->
-  <section class="section projects-section" id="projects">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-tag"><span class="tag-dot"></span> Featured Work</span>
-        <h2 class="section-title">Analytics Projects with <span class="gradient-text">Real Impact</span></h2>
-      </div>
-      <div class="project-filters fade-up">
-        <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="ml">AI / Automation</button>
-        <button class="filter-btn" data-filter="bi">BI / Dashboards</button>
-        <button class="filter-btn" data-filter="engineering">Data Engineering</button>
-      </div>
-      <div class="projects-grid">
-
-        <div class="project-card fade-up" data-category="bi">
-          <div class="project-chart-header amber-chart">
-            <div class="mini-line-preview">
-              <svg viewBox="0 0 120 40" width="100%" height="100%">
-                <polyline points="0,35 20,28 40,30 60,20 80,15 100,10 120,5"
-                  fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
-                <path d="M0,35 20,28 40,30 60,20 80,15 100,10 120,5 V40 H0Z"
-                  fill="rgba(255,255,255,0.15)"/>
-              </svg>
-            </div>
-            <div class="project-category-badge">BI · Dashboard</div>
-          </div>
-          <div class="project-body">
-            <h3>Power BI ITSM SLA Dashboards</h3>
-            <p>Architected 10+ Power BI dashboards using DAX and data modeling to track SLAs and ticket trends for Tier-1/2 teams. Enhanced management review efficiency and gave stakeholders real-time visibility into operational health.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">10+</span>
-                <span class="ik-lbl">Dashboards</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">SLA</span>
-                <span class="ik-lbl">Tracking</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Live</span>
-                <span class="ik-lbl">Real-Time</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Power BI</span><span>DAX</span><span>ServiceNow</span><span>Data Modelling</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up" data-category="bi">
-          <div class="project-chart-header blue-chart">
-            <div class="mini-bar-preview">
-              <div class="mb" style="height:45%"></div>
-              <div class="mb" style="height:65%"></div>
-              <div class="mb" style="height:80%"></div>
-              <div class="mb" style="height:60%"></div>
-              <div class="mb" style="height:95%"></div>
-              <div class="mb" style="height:75%"></div>
-            </div>
-            <div class="project-category-badge">BI · Analytics</div>
-          </div>
-          <div class="project-body">
-            <h3>Customer Performance & Risk Analytics Platform</h3>
-            <p>Analyzed 3,900+ customer records using EDA, feature engineering, and modeling in Python and SQL. Delivered interactive Power BI dashboards with predictive insights to support business decisions.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">3,900+</span>
-                <span class="ik-lbl">Records</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">EDA</span>
-                <span class="ik-lbl">Deep Analysis</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Predictive</span>
-                <span class="ik-lbl">Insights</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Python</span><span>SQL</span><span>Power BI</span><span>Feature Engineering</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up" data-category="engineering">
-          <div class="project-chart-header green-chart">
-            <div class="mini-gauge-preview">
-              <svg viewBox="0 0 120 60" width="100%" height="100%">
-                <path d="M 10,55 A 50,50 0 0 1 110,55" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
-                <path d="M 10,55 A 50,50 0 0 1 110,55" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="8"
-                  stroke-dasharray="157" stroke-dashoffset="25" stroke-linecap="round"/>
-                <text x="60" y="52" text-anchor="middle" fill="white" font-size="14" font-weight="700" font-family="Inter">4K+</text>
-              </svg>
-            </div>
-            <div class="project-category-badge">Data Engineering</div>
-          </div>
-          <div class="project-body">
-            <h3>Alert Runbook Creation & Platform Migration</h3>
-            <p>Directed documentation and mapping of 4,000+ alerts from a legacy platform to a new alert system. Spearheaded runbook creation and automated mapping workflows, enabling full automation of alert handling with zero downtime.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">4,000+</span>
-                <span class="ik-lbl">Alerts Mapped</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Zero</span>
-                <span class="ik-lbl">Downtime</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">100%</span>
-                <span class="ik-lbl">Automated</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Runbook</span><span>ITSM</span><span>Automation</span><span>ServiceNow</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up" data-category="engineering">
-          <div class="project-chart-header purple-chart">
-            <div class="mini-donut-preview">
-              <svg viewBox="0 0 80 80" width="80" height="80">
-                <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
-                <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="8"
-                  stroke-dasharray="176" stroke-dashoffset="0" stroke-linecap="round"
-                  transform="rotate(-90 40 40)"/>
-                <text x="40" y="45" text-anchor="middle" fill="white" font-size="11" font-weight="700" font-family="Inter">100%</text>
-              </svg>
-            </div>
-            <div class="project-category-badge">Data Validation</div>
-          </div>
-          <div class="project-body">
-            <h3>Client Data Validation & Domain Accuracy Initiative</h3>
-            <p>Managed a team of 8 to validate user-domain accuracy across a large client dataset over 5 months. Delivered 100% accuracy across the entire dataset — earning the unit-level INSTA Rise Award for process transformation.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">100%</span>
-                <span class="ik-lbl">Accuracy</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">8</span>
-                <span class="ik-lbl">Team Size</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">5 mo</span>
-                <span class="ik-lbl">Duration</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Data Validation</span><span>Excel</span><span>Quality Audit</span><span>INSTA Award</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up" data-category="ml">
-          <div class="project-chart-header teal-chart">
-            <div class="mini-bar-preview">
-              <div class="mb" style="height:55%; background:rgba(255,255,255,0.5)"></div>
-              <div class="mb" style="height:80%; background:rgba(255,255,255,0.7)"></div>
-              <div class="mb" style="height:65%; background:rgba(255,255,255,0.5)"></div>
-              <div class="mb" style="height:95%; background:rgba(255,255,255,0.9)"></div>
-              <div class="mb" style="height:70%; background:rgba(255,255,255,0.6)"></div>
-              <div class="mb" style="height:85%; background:rgba(255,255,255,0.7)"></div>
-            </div>
-            <div class="project-category-badge">AI · Automation</div>
-          </div>
-          <div class="project-body">
-            <h3>AI-Assisted Chrome Extension for Service Mapping</h3>
-            <p>Developed an AI-powered Chrome extension to automatically map 150+ business services, eliminating manual lookups and reducing resolution time. Mentored 5+ peers on adopting the tool into daily workflows.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">150+</span>
-                <span class="ik-lbl">Services Mapped</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">5+</span>
-                <span class="ik-lbl">Peers Mentored</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Zero</span>
-                <span class="ik-lbl">Manual Lookups</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Chrome Extension</span><span>AI-Assisted</span><span>JavaScript</span><span>Automation</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="project-card fade-up" data-category="engineering">
-          <div class="project-chart-header red-chart">
-            <div class="mini-line-preview">
-              <svg viewBox="0 0 120 40" width="100%" height="100%">
-                <polyline points="0,38 15,35 30,32 45,26 60,20 75,16 90,10 105,7 120,4"
-                  fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="120" cy="4" r="4" fill="white"/>
-              </svg>
-            </div>
-            <div class="project-category-badge">Data Engineering</div>
-          </div>
-          <div class="project-body">
-            <h3>E-Commerce Data Pipeline & Analytics</h3>
-            <p>Built an end-to-end data pipeline from raw e-commerce dataset through Python-based cleaning and transformation, SQL-based modeling, to a Power BI dashboard with sales, customer, and product performance insights.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">End-to-End</span>
-                <span class="ik-lbl">Pipeline</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">3-Layer</span>
-                <span class="ik-lbl">Architecture</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Power BI</span>
-                <span class="ik-lbl">Dashboard</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Python</span><span>SQL</span><span>Power BI</span><span>EDA</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ADD NEW PROJECT BELOW — copy one of the cards above and update category, title, description, and tags -->
-        <!-- data-category options: "bi" | "ml" | "engineering" -->
-        <!-- chart header color options: blue-chart | amber-chart | green-chart | purple-chart | teal-chart | red-chart -->
-        <!--
-        <div class="project-card fade-up" data-category="bi">
-          <div class="project-chart-header blue-chart">
-            <div class="mini-bar-preview">
-              <div class="mb" style="height:50%"></div>
-              <div class="mb" style="height:70%"></div>
-              <div class="mb" style="height:90%"></div>
-              <div class="mb" style="height:60%"></div>
-              <div class="mb" style="height:80%"></div>
-            </div>
-            <div class="project-category-badge">BI · Dashboard</div>
-          </div>
-          <div class="project-body">
-            <h3>Project Title Here</h3>
-            <p>Describe what you built, the problem it solved, and the approach you took. Keep it 2-3 sentences.</p>
-            <div class="project-impact-row">
-              <div class="impact-kpi">
-                <span class="ik-val green-text">Metric</span>
-                <span class="ik-lbl">Label</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Metric</span>
-                <span class="ik-lbl">Label</span>
-              </div>
-              <div class="impact-kpi">
-                <span class="ik-val">Metric</span>
-                <span class="ik-lbl">Label</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span>Tool 1</span><span>Tool 2</span><span>Tool 3</span>
-            </div>
-          </div>
-        </div>
-        -->
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== EXPERIENCE ======================== -->
-  <section class="section experience-section" id="experience">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-tag"><span class="tag-dot"></span> Career Journey</span>
-        <h2 class="section-title">Experience <span class="gradient-text">Timeline</span></h2>
-      </div>
-      <div class="timeline">
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">Technology Analyst</h3>
-                <span class="timeline-company">Infosys · Hyderabad, India</span>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-period">Jan 2025 — Present · 1 yr 5 mos</span>
-                <span class="timeline-badge">Current</span>
-              </div>
-            </div>
-            <p class="timeline-summary">Focused on data-driven decision-making, reporting automation, and operational analytics.</p>
-            <div class="exp-metrics-row">
-              <div class="exp-metric"><span class="em-val blue-text">10+</span><span class="em-lbl">Dashboards Built</span></div>
-              <div class="exp-metric"><span class="em-val green-text">4,000+</span><span class="em-lbl">Alerts Migrated</span></div>
-              <div class="exp-metric"><span class="em-val amber-text">60%</span><span class="em-lbl">Efficiency Gain</span></div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Developed Power BI dashboards to track SLA performance, ticket trends, and team KPIs across Tier-1/2 operations.</li>
-              <li>Automated recurring reports using Excel macros and scripts, improving efficiency and significantly reducing manual effort.</li>
-              <li>Analyzed data from ServiceNow and Wolken to generate actionable insights for operations and management teams.</li>
-              <li>Led runbook creation for 4,000+ alerts during platform migration, enabling structured and automated alert handling.</li>
-              <li>Built a Chrome extension to map business services to teams, eliminating manual lookup time across the floor.</li>
-              <li>Served as the key point of contact for all reporting, dashboarding, and data-related queries from stakeholders.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>Power BI</span><span>DAX</span><span>Excel VBA</span><span>ServiceNow</span><span>SQL</span><span>Stakeholder Management</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">Senior System Engineer</h3>
-                <span class="timeline-company">Infosys · Hyderabad, India</span>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-period">Oct 2023 — Jan 2025 · 1 yr 4 mos</span>
-              </div>
-            </div>
-            <p class="timeline-summary">Expanded into data analysis, process improvement, and program coordination while continuing audit responsibilities.</p>
-            <div class="exp-metrics-row">
-              <div class="exp-metric"><span class="em-val blue-text">8</span><span class="em-lbl">Team Led</span></div>
-              <div class="exp-metric"><span class="em-val green-text">100%</span><span class="em-lbl">Data Accuracy</span></div>
-              <div class="exp-metric"><span class="em-val amber-text">INSTA</span><span class="em-lbl">Award Winner</span></div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Designed audit templates and compliance frameworks to standardize quality evaluation across service operations.</li>
-              <li>Built Excel-based reports using macros, pivot tables, and advanced formulas to analyze ticket trends and team performance.</li>
-              <li>Coordinated onboarding and offboarding processes and maintained all project documentation in SharePoint.</li>
-              <li>Acted as liaison between technical teams and stakeholders, conducting regular status calls and ensuring delivery alignment.</li>
-              <li>Led a team of 8 in a large-scale data validation project, achieving 100% accuracy and receiving unit-level INSTA Rise Award recognition.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>SQL</span><span>Dashboard Building</span><span>Excel</span><span>SharePoint</span><span>Data Validation</span><span>Stakeholder Management</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">System Engineer</h3>
-                <span class="timeline-company">Infosys · Hyderabad, India</span>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-period">Oct 2021 — Oct 2023 · 2 yrs 1 mo</span>
-              </div>
-            </div>
-            <p class="timeline-summary">Worked on ITSM operations and quality auditing, ensuring accuracy and compliance across incident, service request, and change management processes.</p>
-            <div class="exp-metrics-row">
-              <div class="exp-metric"><span class="em-val blue-text">500+</span><span class="em-lbl">Tickets Audited/mo</span></div>
-              <div class="exp-metric"><span class="em-val green-text">ITIL</span><span class="em-lbl">Certified Process</span></div>
-              <div class="exp-metric"><span class="em-val amber-text">SLA</span><span class="em-lbl">Compliance Focus</span></div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Performed detailed audits of ServiceNow tickets to validate timelines, work notes, and field accuracy across incident and change processes.</li>
-              <li>Ensured adherence to process guidelines and compliance standards across service operations for global clients.</li>
-              <li>Utilized Excel-based audit templates to track quality metrics and identify process improvement areas.</li>
-              <li>Developed strong understanding of ITIL processes, ticket lifecycle, and operational workflows across Tier-1/2 support.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>ITIL</span><span>ServiceNow</span><span>SLA Management</span><span>Excel</span><span>Quality Auditing</span><span>ITSM</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-role">B.Tech — Electronics & Communication Engineering</h3>
-                <span class="timeline-company">Vignana Bharathi Institute of Technology</span>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-period">2017 — 2021</span>
-              </div>
-            </div>
-            <div class="exp-metrics-row">
-              <div class="exp-metric"><span class="em-val blue-text">4</span><span class="em-lbl">Year Program</span></div>
-              <div class="exp-metric"><span class="em-val green-text">ECE</span><span class="em-lbl">Specialization</span></div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Completed B.Tech in Electronics &amp; Communication Engineering, building strong foundations in analytical thinking and problem solving.</li>
-              <li>Transitioned into data analytics and BI, self-developing expertise in Power BI, SQL, Python, and ITSM tools during and after graduation.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span>Electronics</span><span>Communication Engineering</span><span>B.Tech</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Certifications -->
-      <div class="certs-section fade-up">
-        <h3 class="certs-title">Certifications & Credentials</h3>
-        <div class="certs-grid">
-          <div class="cert-card">
-            <div class="cert-badge blue-cert">MS</div>
-            <div>
-              <div class="cert-name">DP-900 Azure Data Fundamentals</div>
-              <div class="cert-issuer">Microsoft · Certified</div>
-            </div>
-          </div>
-          <!-- ADD NEW CERTIFICATION BELOW — copy this block and update the fields -->
-          <!--
-          <div class="cert-card">
-            <div class="cert-badge [blue-cert|amber-cert|green-cert|purple-cert]">SHORT</div>
-            <div>
-              <div class="cert-name">Certification Name Here</div>
-              <div class="cert-issuer">Issuer · Year</div>
-            </div>
-          </div>
-          -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== CONTACT ======================== -->
-  <section class="section contact-section" id="contact">
-    <div class="container">
-      <div class="section-header fade-up">
-        <span class="section-tag"><span class="tag-dot"></span> Get In Touch</span>
-        <h2 class="section-title">Let's Build Something <span class="gradient-text">Remarkable</span></h2>
-        <p class="contact-subtitle">Open to Data Analyst, Business Analyst, and Program Analyst roles. I typically respond within 24 hours.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info fade-up">
-          <div class="contact-item">
-            <div class="contact-icon blue-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <span class="contact-label">Email</span>
-              <a href="mailto:pratik.nanda99@gmail.com" class="contact-value">pratik.nanda99@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon blue-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </div>
-            <div>
-              <span class="contact-label">LinkedIn</span>
-              <a href="https://www.linkedin.com/in/pratiknanda/" target="_blank" class="contact-value">linkedin.com/in/pratiknanda</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon blue-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div>
-              <span class="contact-label">Location</span>
-              <span class="contact-value">Hyderabad, India · Open to Remote</span>
-            </div>
-          </div>
-          <div class="availability-card">
-            <div class="avail-header">
-              <span class="avail-dot"></span>
-              <strong>Currently Available</strong>
-            </div>
-            <p>Open to Data Analyst, Business Analyst, and Program Analyst roles — full-time positions and contract engagements in data analytics and ITSM operations.</p>
-          </div>
-        </div>
-
-        <form class="contact-form fade-up" id="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" placeholder="you@company.com" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="subject">Inquiry Type</label>
-            <input type="text" id="subject" placeholder="Job opportunity / Project / Speaking..." />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Tell me about the opportunity or project..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Send Message
-          </button>
-          <div class="form-success" id="form-success">
-            Message sent! I'll respond within 24 hours.
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-logo">
-        <div class="logo-icon small">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <span>Pratik Nanda · Data Analyst</span>
-      </div>
-      <p class="footer-copy">© 2026 Pratik Nanda. Turning data into decisions.</p>
-      <div class="footer-links">
-        <a href="#">Resume</a>
-        <a href="https://www.linkedin.com/in/pratiknanda/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/PratikNanda" target="_blank">GitHub</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
