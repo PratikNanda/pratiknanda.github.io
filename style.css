@@ -1974,21 +1974,23 @@ a, button, .tool-card, .project-card, .impact-card, .ai-card,
     }
 
     .nav__menu {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: min(360px, 100%);
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: center;
-        gap: 0;
-        padding: 5rem 2rem 2rem;
-        background: var(--surface);
-        box-shadow: -20px 0 50px rgba(15, 26, 20, 0.12);
-        transform: translateX(100%);
-        transition: transform 0.35s var(--ease-out);
-    }
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(360px, 100%);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    padding: 5rem 2rem 2rem;
+    background: var(--surface);
+
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease-out);
+}
 
     .nav__menu.is-open {
         transform: translateX(0);
